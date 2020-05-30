@@ -13,11 +13,6 @@ const Profile = dynamic<Props>(
   { ssr: false }
 );
 
-const Page: NextPage = () => (
-  <>
-    <Profile {...useLazyComponent(create)} />
-    <Profile {...useLazyComponent(create)} />
-  </>
-);
+const Page: NextPage = () => <Profile {...useLazyComponent(create)} />;
 
 export default Page;

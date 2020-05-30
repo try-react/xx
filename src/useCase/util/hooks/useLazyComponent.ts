@@ -7,7 +7,6 @@ import {
 } from "react";
 
 type Redo = () => void;
-
 export type UseLazyComponent = (
   p: (redo: Redo) => LazyExoticComponent<() => ReactElement | null>
 ) => { Component: FC };

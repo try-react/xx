@@ -3,12 +3,12 @@ import { ContentProps } from "~/useCase/useProfile/useProfile";
 
 export const Content: FC<ContentProps> = (props) => (
   <>
-    {props.fo}
-    {props.ba}
-    {/* <p>ニックネーム: {props.domain.nickname}</p> */}
-    <p>説明文: ダミーテキスト, ダミーテキスト, </p>
+    <p>名前: {props.fo}</p>
+    <p>説明文: ダミーテキスト, ダミーテキスト </p>
+
+    <span>別の人のプロフィールを見る</span>
     <button type="button" onClick={props.redo}>
-      再描画
+      再取得
     </button>
   </>
 );

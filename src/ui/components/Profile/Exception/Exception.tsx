@@ -1,11 +1,15 @@
 import React, { FC } from "react";
 import { ExceptionProps } from "~/useCase/useProfile/useProfile";
+import styles from "./Exception.module.css";
 
 export const Exception: FC<ExceptionProps> = (props) => (
-  <p>
+  <>
+    <p className={styles.msg}>回線が込み合ってます...</p>
     <button type="button" onClick={props.redo}>
-      再描画
+      もう一度取得
     </button>
-    aabb
-  </p>
+  </>
 );
+
+// cssがグローバルでないか？
+// stylint

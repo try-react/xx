@@ -1,4 +1,5 @@
-import React, { lazy, ReactElement, LazyExoticComponent } from "react";
+import React, { lazy } from "react";
+import type { ReactElement, LazyExoticComponent } from "react";
 import { sleep, random } from "~/util/lib";
 
 // APIなど
@@ -11,7 +12,6 @@ const fetchMe = async () => {
 };
 
 type Create = () => LazyExoticComponent<() => ReactElement>;
-
 export const create: Create = () =>
   lazy(async () => {
     try {

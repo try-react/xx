@@ -1,4 +1,4 @@
-import { Profile } from "./type";
+import type { Profile } from "./type";
 import { InfraException } from "~/util/exception/Infra";
 import { UseCaseException } from "~/util/exception/UseCase";
 import { AppException } from "~/util/exception/App";

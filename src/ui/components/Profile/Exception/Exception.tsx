@@ -1,5 +1,6 @@
-import React, { FC } from "react";
-import { ExceptionProps } from "~/useCase/useProfile/useProfile";
+import React from "react";
+import type { FC } from "react";
+import type { ExceptionProps } from "~/useCase/useProfile/useProfile";
 import styles from "./Exception.module.css";
 
 export const Exception: FC<ExceptionProps> = (props) => (
@@ -10,5 +11,3 @@ export const Exception: FC<ExceptionProps> = (props) => (
     </button>
   </>
 );
-
-// stylint

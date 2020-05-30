@@ -1,4 +1,4 @@
-import { UseCase, Repository, InitData } from "~/util/type";
+import type { UseCase, Repository, InitData } from "~/util/type";
 import { InfraException } from "~/util/exception/Infra";
 import { UseCaseException } from "~/util/exception/UseCase";
 import { AppException } from "~/util/exception/App";

@@ -1,5 +1,6 @@
-import React, { ComponentProps } from "react";
-import { NextPage } from "next";
+import React from "react";
+import type { ComponentProps } from "react";
+import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { create } from "~/useCase/useMe";
 

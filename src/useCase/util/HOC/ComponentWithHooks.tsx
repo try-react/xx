@@ -1,4 +1,5 @@
-import React, { FC, ReactElement } from "react";
+import React from "react";
+import type { FC, ReactElement } from "react";
 
 type ComponentWithHooksType = <Props, InitData>(
   Component: FC<Props>,

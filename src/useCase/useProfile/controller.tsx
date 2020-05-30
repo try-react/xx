@@ -2,7 +2,7 @@ import React, { lazy } from "react";
 import { useContent, useException } from "~/useCase/useProfile";
 import { profile } from "~/domain/profile";
 import { repository } from "~/infra/repository/profile/repository";
-import { Create } from "~/useCase/util/hooks/useLazyComponent";
+import type { Create } from "~/useCase/util/hooks/useLazyComponent";
 
 export type Service = typeof service;
 const service = {
@@ -20,7 +20,6 @@ export const create: Create = (redo) =>
       );
       return { default: Component };
     } catch (e) {
-      console.log(e);
       const { Exception } = await import("~/ui/components/Profile/Exception");
       const Component = () => (
         <Exception {...useException({ initData: e, service, redo })} />

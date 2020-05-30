@@ -1,4 +1,4 @@
-import { ProfileRepository } from "~/domain/profile/type";
+import type { ProfileRepository } from "~/domain/profile/type";
 import { client } from "./client";
 
 export const repository: ProfileRepository = {

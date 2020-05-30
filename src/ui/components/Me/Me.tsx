@@ -1,4 +1,5 @@
-import React, { Suspense, FC } from "react";
+import React, { Suspense } from "react";
+import type { FC } from "react";
 
 type Props = {
   Component: FC;

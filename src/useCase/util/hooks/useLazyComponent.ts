@@ -1,15 +1,11 @@
-import {
-  useState,
-  useEffect,
-  LazyExoticComponent,
-  ReactElement,
-  FC,
-} from "react";
+import { useState, useEffect, LazyExoticComponent } from "react";
+import type { ReactElement, FC } from "react";
 
-type Redo = () => void;
+export type Redo = () => void;
 export type UseLazyComponent = (
   p: (redo: Redo) => LazyExoticComponent<() => ReactElement | null>
 ) => { Component: FC };
+export type Create = Parameters<UseLazyComponent>[0];
 
 export const useLazyComponent: UseLazyComponent = (create) => {
   const Init: FC = () => null;
@@ -23,5 +19,3 @@ export const useLazyComponent: UseLazyComponent = (create) => {
 
   return { Component };
 };
-
-export type Create = Parameters<UseLazyComponent>[0];

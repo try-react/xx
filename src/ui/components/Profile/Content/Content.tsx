@@ -1,5 +1,6 @@
-import React, { FC } from "react";
-import { ContentProps } from "~/useCase/useProfile/useProfile";
+import React from "react";
+import type { FC } from "react";
+import type { ContentProps } from "~/useCase/useProfile/useProfile";
 
 export const Content: FC<ContentProps> = (props) => (
   <>

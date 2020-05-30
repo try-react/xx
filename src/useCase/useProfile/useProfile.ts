@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Service } from "~/useCase/useProfile/controller";
-import { Profile } from "~/domain/profile/type";
+import type { Service } from "~/useCase/useProfile/controller";
+import type { Profile } from "~/domain/profile/type";
+import type { Redo } from "~/useCase/util/hooks/useLazyComponent";
 
 type InitData = ReturnType<Service["render"]["run"]> extends Promise<infer U>
   ? U
@@ -11,7 +12,8 @@ type OProps<T> = {
   service: Service;
   redo: () => void;
 };
-type Redo = () => void;
+
+// ---------------------------------------------------
 export type ContentProps = {
   fo: string;
   ba: string;

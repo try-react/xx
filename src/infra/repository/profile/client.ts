@@ -1,6 +1,7 @@
 import { sleep, random } from "~/util/lib";
-import { ProfileRepository } from "~/domain/profile/type";
-import { InfraException, InfraExceptionObj } from "~/util/exception/Infra";
+import type { ProfileRepository } from "~/domain/profile/type";
+import { InfraException } from "~/util/exception/Infra";
+import type { InfraExceptionObj } from "~/util/exception/Infra";
 
 type Profile = {
   id_: string;

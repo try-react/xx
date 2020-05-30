@@ -11,5 +11,4 @@ export const Exception: FC<ExceptionProps> = (props) => (
   </>
 );
 
-// cssがグローバルでないか？
 // stylint

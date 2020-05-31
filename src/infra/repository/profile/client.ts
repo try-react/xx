@@ -1,13 +1,13 @@
+import { OriginalResponseData } from "~/util/type";
 import { sleep, random } from "~/util/lib";
 import type { ProfileRepository } from "~/domain/profile/type";
 import { InfraException } from "~/util/exception/Infra";
-import type { InfraExceptionObj } from "~/util/exception/Infra";
 
-type Profile = {
+type Profile = OriginalResponseData<{
   id_: string;
   name_: string;
   description: string;
-};
+}>;
 
 const mockSuccess: [Profile, ...Profile[]] = [
   {
@@ -27,11 +27,6 @@ const mockSuccess: [Profile, ...Profile[]] = [
   },
 ];
 
-const mockException: InfraExceptionObj = {
-  statusCode: 404,
-  etc: "色々",
-};
-
 const convertSuccess = (p: Profile) => ({
   id: p.id_,
   name: p.name_,
@@ -45,7 +40,10 @@ const fetchProfile: ProfileRepository["fetch"] = async () => {
       mockSuccess[Math.floor(Math.random() * mockSuccess.length)]
     );
   }
-  return InfraException.create("randomの所でやってもうた。", mockException);
+  return InfraException.create({
+    msg: "randomの所でやってもうた。",
+    err: { statusCode: 404, etc: "色々" },
+  });
 };
 
 export const client = {

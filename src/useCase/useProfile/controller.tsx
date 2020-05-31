@@ -17,7 +17,7 @@ export const create: Create = (redo) =>
     try {
       const initData = await service.render({ repository });
 
-      if (service.typeGuard.isProfileType(initData)) {
+      if (service.typeGuard.isProfileInitData(initData)) {
         const { Content } = await import("~/ui/components/Profile/Content");
         const Component = () => (
           <Content {...useContent({ initData, service, redo })} />

@@ -1,25 +1,26 @@
 import type { Service } from "~/useCase/useProfile/controller";
-import type { ProfileType, ProfileInitState } from "~/domain/profile/type";
+import type { ProfileInitData } from "~/domain/profile/type";
 import type { Redo } from "~/useCase/util/hooks/useLazyComponent";
+import type { InitState } from "~/util/type";
 
-export type ContentProps = {
-  domain: ProfileInitState;
-  operations: { redo: Redo };
-};
 type ContentInitData = {
-  initData: ProfileType;
+  initData: ProfileInitData;
   service: Service;
   redo: Redo;
 };
+
+export type ContentProps = InitState<{
+  domain: ProfileInitData;
+  operations: { redo: Redo };
+}>;
+
 type UseContent = (p: ContentInitData) => ContentProps;
 export const useContent: UseContent = (props) => {
   // `hooks`未使用のため `use`のprefixは不要です。
   // しかし、プロダクションのコードでは、`domain`情報の編集は必須なのでそれを想定。
   return {
     domain: {
-      id: props.initData.id,
-      name: props.initData.name,
-      description: props.initData.description,
+      ...props.initData,
     },
     operations: { redo: props.redo },
   };

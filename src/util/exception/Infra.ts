@@ -1,23 +1,23 @@
-import type { Exception } from "~/util/type";
 import { BaseException } from "./Base";
+import type { Exception } from "~/util/type";
 
-export type InfraExceptionObj = {
+type InfraExceptionObj = Exception<{
   etc: string;
   statusCode: 404 | 400; // ...
-};
+}>;
 
 export class InfraException extends BaseException {
-  get exception(): Exception {
+  get exception(): InfraExceptionObj {
     return this._e;
   }
 
-  private constructor(private _e: Exception) {
+  private constructor(private _e: InfraExceptionObj) {
     super(_e);
     this.name = InfraException.name;
   }
 
-  static create(msg: string, err: InfraExceptionObj): InfraException {
-    return new InfraException({ isErr: true, msg, err });
+  static create({ msg, err }: InfraExceptionObj): InfraException {
+    return new InfraException({ msg, err });
   }
 
   static instanceof_(p: unknown): p is InfraException {

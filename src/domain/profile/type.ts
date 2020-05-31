@@ -1,33 +1,32 @@
-import type { UseCase, Repository, InitData, InitState } from "~/util/type";
+import type {
+  UseCase,
+  Repository,
+  InitData,
+  ResponseData,
+  Domain,
+} from "~/util/type";
 import { InfraException } from "~/util/exception/Infra";
 
-// 手抜き... 本当は、`class` にすべき
-export type ProfileType = InitData<{
+export type ProfileInitData = InitData<{
   id: string;
   name: string;
   description: string;
 }>;
 
-export type ProfileInitState = InitState<{
-  id: string;
-  name: string;
-  description: string;
-}>;
-
-export type Profile = {
+export type Profile = Domain<{
   render: UseCase<
     (p: {
       repository: ProfileRepository;
-    }) => Promise<ProfileType | InfraException>
+    }) => Promise<ProfileInitData | InfraException>
   >;
-};
+}>;
 
-type ProfileResType = {
+type ProfileResponseData = ResponseData<{
   id: string;
   name: string;
   description: string;
-};
+}>;
 
 export type ProfileRepository = {
-  fetch: () => Repository<Promise<ProfileResType | InfraException>>;
+  fetch: () => Repository<Promise<ProfileResponseData | InfraException>>;
 };

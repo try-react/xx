@@ -13,8 +13,11 @@ type ContentInitData = {
 };
 type UseContent = (p: ContentInitData) => ContentProps;
 export const useContent: UseContent = (props) => {
+  // `hooks`未使用のため `use`のprefixは不要です。
+  // しかし、プロダクションのコードでは、`domain`情報の編集は必須なのでそれを想定。
   return {
     domain: {
+      id: props.initData.id,
       name: props.initData.name,
       description: props.initData.description,
     },

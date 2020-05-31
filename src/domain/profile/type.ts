@@ -1,24 +1,33 @@
-import type { UseCase, Repository, InitData } from "~/util/type";
+import type { UseCase, Repository, InitData, InitState } from "~/util/type";
 import { InfraException } from "~/util/exception/Infra";
-import { UseCaseException } from "~/util/exception/UseCase";
-import { AppException } from "~/util/exception/App";
+
+// 手抜き... 本当は、`class` にすべき
+export type ProfileType = InitData<{
+  id: string;
+  name: string;
+  description: string;
+}>;
+
+export type ProfileInitState = InitState<{
+  id: string;
+  name: string;
+  description: string;
+}>;
 
 export type Profile = {
-  /**
-   * 再度レンダリング可能化の判定
-   */
-  tryCanReRender: (
-    p: InfraException | UseCaseException | AppException
-  ) => boolean;
-  /**
-   * レンダリングの流れ
-   */
   render: UseCase<
-    { repository: ProfileRepository },
-    Promise<InitData<{ name: string }>>
+    (p: {
+      repository: ProfileRepository;
+    }) => Promise<ProfileType | InfraException>
   >;
 };
 
+type ProfileResType = {
+  id: string;
+  name: string;
+  description: string;
+};
+
 export type ProfileRepository = {
-  fetch: <E = never>() => Repository<Promise<{ id: string; name: string } | E>>;
+  fetch: () => Repository<Promise<ProfileResType | InfraException>>;
 };

@@ -1,43 +1,34 @@
-import { useState } from "react";
 import type { Service } from "~/useCase/useProfile/controller";
-import type { Profile } from "~/domain/profile/type";
+import type { ProfileType, ProfileInitState } from "~/domain/profile/type";
 import type { Redo } from "~/useCase/util/hooks/useLazyComponent";
 
-type InitData = ReturnType<Service["render"]["run"]> extends Promise<infer U>
-  ? U
-  : never;
-
-type OProps<T> = {
-  initData: T;
-  service: Service;
-  redo: () => void;
-};
-
-// ---------------------------------------------------
 export type ContentProps = {
-  fo: string;
-  ba: string;
+  domain: ProfileInitState;
+  operations: { redo: Redo };
+};
+type ContentInitData = {
+  initData: ProfileType;
+  service: Service;
   redo: Redo;
 };
-type UseContent = (p: OProps<InitData>) => ContentProps;
+type UseContent = (p: ContentInitData) => ContentProps;
 export const useContent: UseContent = (props) => {
-  const [fo] = useState(props.initData.name);
-
-  return { fo, ba: "x", redo: props.redo };
+  return {
+    domain: {
+      name: props.initData.name,
+      description: props.initData.description,
+    },
+    operations: { redo: props.redo },
+  };
 };
 
-// ---------------------------------------------------
 export type ExceptionProps = {
-  aa: string;
-  bb: string;
+  operations: { redo: Redo };
+};
+type ExceptionInitData = {
   redo: Redo;
 };
-
-type UseException = (
-  p: OProps<Parameters<Profile["tryCanReRender"]>[0]>
-) => ExceptionProps;
+type UseException = (p: ExceptionInitData) => ExceptionProps;
 export const useException: UseException = (props) => {
-  props.service.tryCanReRender(props.initData);
-  const [bb] = useState("ng");
-  return { aa: "a", bb, redo: props.redo, x: props.initData };
+  return { operations: { redo: props.redo } };
 };

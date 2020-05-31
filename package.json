@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "// -": "",
+    "// --": "",
+    "doc": "yarn code-dependency --source ./src  --ts-config ./tsconfig.json",
+    "// CI向けの検証": "",
     "valid:type": "yarn tsc --noEmit",
     "valid:lint": "yarn eslint --fix '{src,pages}/**/*.{ts,tsx}'",
-    "valid:test": "yarn jest",
-    "doc": "yarn code-dependency --source ./src  --ts-config ./tsconfig.json"
+    "valid:test": "yarn jest"
   },
   "dependencies": {
     "@code-dependency/cli": "0.5.0",

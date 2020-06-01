@@ -29,7 +29,6 @@ it(`
 
   const el = await creator(testid);
 
-  console.log(el.textContent);
   /**
    * このテストでは、`Component`の存在確認だけで良い
    * しかし、今回は確認のために`props`が正常にrenderされているか確認する。

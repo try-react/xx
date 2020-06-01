@@ -29,9 +29,10 @@ it(`
 
   const el = await creator(testid);
 
-  // uiテストなので、Componentの存在確認だけでも良いが、
-  // テスト対象がシンプルなので、正常系は`props`まで確認する。
-  // expect(el.textContent).toBeDefined();
+  /**
+   * このテストでは、`Component`の存在確認だけで良い
+   * しかし、今回は確認のために`props`が正常にrenderされているか確認する。
+   */
   expect(el.textContent).toMatch(expected);
 });
 

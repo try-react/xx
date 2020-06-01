@@ -6,6 +6,6 @@ type Props = {
 };
 export const Content: FC<Props> = (props) => (
   <>
-    名前:<span data-testid="authorName"> {props.name}</span>
+    名前:<span data-testid="authorName">{props.name}</span>
   </>
 );

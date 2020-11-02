@@ -22,7 +22,7 @@
     "@types/jest": "26.0.14",
     "babel-plugin-react-remove-properties": "0.3.0",
     "core-js": "3",
-    "eslint-plugin-jest": "23.13.2",
+    "eslint-plugin-jest": "24.1.0",
     "husky": "4.2.5",
     "jest": "26.5.0",
     "lint-staged": "10.4.0",

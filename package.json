@@ -19,7 +19,7 @@
     "@cybozu/eslint-config": "11.0.0",
     "@testing-library/react": "10.4.7",
     "@testing-library/react-hooks": "3.7.0",
-    "@types/jest": "26.0.19",
+    "@types/jest": "26.0.20",
     "babel-plugin-react-remove-properties": "0.3.0",
     "core-js": "3",
     "eslint-plugin-jest": "23.13.2",
